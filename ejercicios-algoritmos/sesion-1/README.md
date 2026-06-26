@@ -14,6 +14,8 @@ Y luego ejecutá los tests del ejercicio que quieras:
 npm test transformador
 ```
 
+no uses npm test .\transformador
+
 O ejecutá todos los tests juntos:
 ```bash
 npm test
