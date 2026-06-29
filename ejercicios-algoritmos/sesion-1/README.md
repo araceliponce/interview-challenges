@@ -15,8 +15,20 @@ npm test transformador
 ```
 
 no uses npm test .\transformador
+usa npm test isograma
+...
 
 O ejecutá todos los tests juntos:
 ```bash
 npm test
 ```
+
+
+
+
+
+
+
+// Source - https://stackoverflow.com/a/42106036
+
+npm install @types/node --save-dev
