@@ -7,3 +7,13 @@
   color: CanvasText;
   background-color: Canvas;
 }
+
+button {
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.cell {
+  outline: 1px solid lightgreen;
+  outline-offset: -1px;
+}
