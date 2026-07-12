@@ -43,7 +43,9 @@ export default function Board({ CELLS }: { CELLS: (string | number)[][] }) {
                                             {cell}
                                         </div>
                                         :
-                                        <button onClick={() => handleClick(cellKey)}>{cell}</button>
+                                        <button onClick={() => status === 'started' && handleClick(cellKey)}>
+                                            {/* {cell} */}
+                                        </button>
                                     }
                                 </div>
 
