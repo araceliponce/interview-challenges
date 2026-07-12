@@ -12,6 +12,8 @@ const TO_CHECK = [
   [1, 1]
 ]
 
+export const BOO_CHAR = 'B'
+
 // const ROW_OF_ZEROS = Array.from({ length: ROW_SIZE }, () => 0)
 // const CELLS = Array.from({ length: ROW_SIZE }, () => ROW_OF_ZEROS)
 
@@ -27,7 +29,7 @@ for (let index = 0; index < ROW_SIZE; index++) {
   // si la celda no es nula (o si su valor es cero, lo cambia a 1)
   if (CELLS[randRow][randCell] == 0) {
     console.log('existe')
-    CELLS[randRow][randCell] = 'B'
+    CELLS[randRow][randCell] = BOO_CHAR
   }
 
 }
@@ -41,14 +43,14 @@ for (let i = 0; i < ROW_SIZE; i++) {
 
     let bombsCounter = 0
 
-    if (CELLS[i][j] !== 'B') {
+    if (CELLS[i][j] !== BOO_CHAR) {
 
       for (const item of TO_CHECK) {
 
         let cellToCheck = CELLS[i + item[0]]?.[j + item[1]]
 
         // console.log(i, j, ' encontro:.............')
-        if (cellToCheck !== null && cellToCheck == 'B') {
+        if (cellToCheck !== null && cellToCheck == BOO_CHAR) {
 
           bombsCounter++;
         }

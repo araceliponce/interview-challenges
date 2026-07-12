@@ -8,7 +8,7 @@
   background-color: Canvas;
 }
 
-button {
+.board button {
   border: 1px solid transparent;
   outline: none;
 }

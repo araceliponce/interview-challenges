@@ -1,0 +1,107 @@
+.dialog {
+    padding: 0;
+    inset: 0;
+    position: fixed;
+    border: 0;
+    border-radius: var(--radii, 5px);
+    margin: auto;
+    min-height: 200px;
+    min-width: 200px;
+    max-height: 80dvh;
+    max-width: 90dvh;
+    height: var(--height, auto);
+    width: var(--width, auto);
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8) translateY(10px);
+    transition: all var(--transitionSpeed, 0.25s) allow-discrete;
+
+    color: #222;
+    background-color: #eee;
+
+
+    &[data-theme="dark"] {
+        color: #eee;
+        background-color: #111;
+    }
+
+    /* When dialog is open */
+    &[open] {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+        place-items: stretch;
+        display: grid;
+    }
+
+    /* When dialog is closed */
+    &:not([open]) {
+        transform: scale(0.8) translateY(10px);
+        opacity: 0;
+        margin: auto;
+    }
+}
+
+
+
+
+
+/* Backdrop — closed state / exit transition */
+.dialog::backdrop {
+    transition: all var(--transitionSpeed, 0.25s) allow-discrete;
+    opacity: 0;
+    background-color: #000d;
+}
+
+.dialog[data-theme="dark"]::backdrop {
+    background-color: #fff5;
+}
+
+/* Backdrop — open state */
+.dialog[open]::backdrop {
+    opacity: 1;
+}
+
+.dialog:not([open])::backdrop {
+    opacity: 0;
+}
+
+@starting-style {
+
+    .dialog[open],
+    .dialog:not([open]) {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    .dialog[open]::backdrop {
+        opacity: 0;
+    }
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 45px;
+    min-width: 45px;
+    display: grid;
+    place-content: center;
+    border: 0;
+}
+
+.cross {
+    height: 20px;
+    display: grid;
+    font-size: 11px;
+    color: #111;
+    pointer-events: none;
+
+    [data-theme="dark"] & {
+        color: #eee;
+    }
+}
+
+.dialogInner {
+    padding: var(--padding, 10px);
+}
