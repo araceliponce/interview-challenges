@@ -20,9 +20,6 @@ function App() {
   }, [query]);
 
 
-  useEffect(() => {
-    api.search(query).then(setProducts);
-  }, [query]);
 
   const toggleSortByPrice = () => {
 
