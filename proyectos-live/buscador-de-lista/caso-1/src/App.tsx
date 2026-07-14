@@ -11,15 +11,67 @@ const CURRENT_CURRENCY = 'ARS'
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
   const [query, setQuery] = useState<string>("");
+  const [ascendingChars, setAscendingChars] = useState<boolean | undefined>(undefined) //
+  const [ascendingPrice, setAscendingPrice] = useState<boolean | undefined>(undefined) //
+
 
   useEffect(() => {
     api.search(query).then(setProducts);
   }, [query]);
 
+  const toggleSort = () => {
+    // Since products is React state, you should never mutate it directly.
+    // const newProducts = [...products].sort((actual, next) => {
+    //   if (next.price > actual.price) return 1;
+    //   if (next.price < actual.price) return -1;
+    //   return 0
+    // })
+    // console.log({ newProducts })
+    // setProducts(newProducts)
+  }
+
+  const toggleSortByPrice = () => {
+
+    setProducts((prev) => [...products].sort((actual, next) => {
+      if (ascendingPrice) return actual.price - next.price;
+      else return next.price - actual.price;
+
+    }))
+
+    setAscendingPrice((prev) => !prev)
+    setAscendingChars(undefined)
+  }
+
+  const toggleSortByChars = () => {
+
+    setProducts((prev) => [...products].sort((actual, next) => {
+      if (ascendingChars) return next.title.localeCompare(actual.title);
+      else return actual.title.localeCompare(next.title);
+    }))
+
+    setAscendingChars((prev) => !prev)
+    setAscendingPrice(undefined)
+  }
+
+
+  const arrowSymbol = (value: boolean | undefined) => {
+    return value == undefined ? '-' : ascendingPrice == true ? '↑' : '↓'
+  }
+
   return (
     <main>
       <h1>Tienda digitaloncy</h1>
       <input name="text" placeholder="tv" type="text" onChange={(e) => setQuery(e.target.value)} />
+      <div>
+        <button type="button" onClick={toggleSortByChars}>
+          a-z
+          {arrowSymbol(ascendingChars)}
+        </button>
+        <button type="button" onClick={toggleSortByPrice}>
+          precio
+          {arrowSymbol(ascendingPrice)}
+        </button>
+      </div>
       <ul>
         {products.map(({ id, title, description, price }) => (
           <li key={id}>
