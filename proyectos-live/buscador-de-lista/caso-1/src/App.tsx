@@ -17,22 +17,24 @@ function App() {
 
   useEffect(() => {
     api.search(query).then(setProducts);
-  }, [query]);
 
-  const toggleSort = () => {
-    // Since products is React state, you should never mutate it directly.
-    // const newProducts = [...products].sort((actual, next) => {
-    //   if (next.price > actual.price) return 1;
-    //   if (next.price < actual.price) return -1;
-    //   return 0
-    // })
-    // console.log({ newProducts })
-    // setProducts(newProducts)
-  }
+  }, [query]);
+  // const handleSearch = (e: any) => {
+  //   setQuery(e.target.value)
+  //   let tempProducts = products.filter((data) => {
+  //     return data.title.toLocaleLowerCase().includes(query.toLowerCase())
+  //   })
+  //   setProducts(tempProducts)
+  // }
+
+
+  useEffect(() => {
+    api.search(query).then(setProducts);
+  }, [query]);
 
   const toggleSortByPrice = () => {
 
-    setProducts((prev) => [...products].sort((actual, next) => {
+    setProducts(() => [...products].sort((actual, next) => {
       if (ascendingPrice) return actual.price - next.price;
       else return next.price - actual.price;
 
@@ -44,7 +46,7 @@ function App() {
 
   const toggleSortByChars = () => {
 
-    setProducts((prev) => [...products].sort((actual, next) => {
+    setProducts(() => [...products].sort((actual, next) => {
       if (ascendingChars) return next.title.localeCompare(actual.title);
       else return actual.title.localeCompare(next.title);
     }))

@@ -1,4 +1,5 @@
-import {Product} from "./types";
+import { normalizedString } from "./functions";
+import { Product } from "./types";
 
 const PRODUCTS: Product[] = [
   {
@@ -9,7 +10,7 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 2,
-    title: "Webcam para streams",
+    title: "Webcam para streams de ríos",
     description: "Webcam marca logitency",
     price: 200,
   },
@@ -21,7 +22,7 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 4,
-    title: "Dron profesional",
+    title: "Dron profesional de acción",
     description: "Dron que soporta fuertes vientos, marca phantoncy",
     price: 500,
   },
@@ -38,8 +39,10 @@ const api = {
     let results = PRODUCTS;
 
     if (query) {
+      const normalizedQuery = normalizedString(query); //evita normalizar una y otra vez durante el filtering
+
       results = results.filter((product) => {
-        return product.title.includes(query);
+        return normalizedString(product.title).includes(normalizedQuery);
       });
     }
 
