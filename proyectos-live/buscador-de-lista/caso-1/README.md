@@ -1,7 +1,7 @@
 # Ejercicios de entrevista
 
 ## Nivel 1
-- [ ] El search debe ser case insensitive. (script string normalize nfd)
+- [x] El search debe ser case insensitive. (script string normalize nfd)
 
 ## Nivel 2
 - [x] El precio no se muestra localizado para Argentina.

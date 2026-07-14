@@ -17,15 +17,7 @@ function App() {
 
   useEffect(() => {
     api.search(query).then(setProducts);
-
   }, [query]);
-  // const handleSearch = (e: any) => {
-  //   setQuery(e.target.value)
-  //   let tempProducts = products.filter((data) => {
-  //     return data.title.toLocaleLowerCase().includes(query.toLowerCase())
-  //   })
-  //   setProducts(tempProducts)
-  // }
 
 
   useEffect(() => {
