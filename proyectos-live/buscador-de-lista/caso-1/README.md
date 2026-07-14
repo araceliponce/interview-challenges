@@ -10,4 +10,4 @@
 - [x] Agregar un select para ordenar los resultados alfabéticamente o por precio.
 
 ## Extra
-- [ ] La query y la preferencia de orden deberían persistirse al recargar la página.
+- [x] La query y la preferencia de orden deberían persistirse al recargar la página.
